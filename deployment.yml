@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: moshi-moshi
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        run: moshi-moshi
+    spec:
+      containers:
+      - name: moshi-moshi
+        image: asia.gcr.io/grass-graph/moshi-moshi:latest
+        ports:
+        - containerPort: 8080
