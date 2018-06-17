@@ -1,0 +1,4 @@
+moshi-moshi:
+  image: moshi-moshi:proto02
+  ports:
+    - "8080:8080"
