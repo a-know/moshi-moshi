@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: moshi-moshi
+spec:
+  type: NodePort
+  ports:
+  - protocol: TCP
+    targetPort: 8080
+  selector:
+    run: moshi-moshi

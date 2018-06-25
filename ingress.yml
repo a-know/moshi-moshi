@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: moshi-moshi
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: "moshi-moshi-ip"
+    kubernetes.io/ingress.class: "gce"
+spec:
+  tls:
+  - secretName: cert-manager-tls
+    hosts:
+      - moshi-moshi.moshimo.works
+  backend:
+    serviceName: moshi-moshi
+    servicePort: 8080

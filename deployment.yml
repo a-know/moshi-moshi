@@ -2,8 +2,10 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: moshi-moshi
+  labels:
+    run: moshi-moshi
 spec:
-  replicas: 3
+  replicas: 4
   template:
     metadata:
       labels:
@@ -11,6 +13,12 @@ spec:
     spec:
       containers:
       - name: moshi-moshi
-        image: asia.gcr.io/grass-graph/moshi-moshi:latest
+        image: asia.gcr.io/moshi-moshi-3373/moshi-moshi:latest
+        readinessProbe:
+          httpGet:
+            path: /heartbeat
+            port: 8080
+          initialDelaySeconds: 3
+          periodSeconds: 3
         ports:
         - containerPort: 8080
