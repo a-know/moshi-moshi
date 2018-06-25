@@ -10,13 +10,16 @@ container-stop:
 	docker-compose stop
 
 build-for-gcr:
-	docker build -t asia.gcr.io/${PROJECT}/moshi-moshi:latest .
+	docker build -t asia.gcr.io/${PROJECT}/moshi-moshi:${VERSION} .
 
 push-to-gcr:
-	gcloud docker -- push asia.gcr.io/${PROJECT}/moshi-moshi:latest
+	gcloud docker -- push asia.gcr.io/${PROJECT}/moshi-moshi:${VERSION}
 
 k8s-deploy:
 	kubectl create -f deployment.yml
 
 k8s-expose:
 	kubectl expose deployment moshi-moshi --type=LoadBalancer --port 80 --target-port=8080
+
+update-container:
+	kubectl set image deployment/moshi-moshi moshi-moshi=asia.gcr.io/moshi-moshi-3373/moshi-moshi:${VERSION}
