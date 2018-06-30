@@ -1,5 +1,8 @@
 .PHONY: all
 
+run:
+	go build -o moshi-moshi.exe && ./moshi-moshi.exe
+
 container-build:
 	docker build -t moshi-moshi:${TAG} .
 
