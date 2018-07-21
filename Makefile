@@ -26,3 +26,6 @@ k8s-expose:
 
 update-container:
 	kubectl set image deployment/moshi-moshi moshi-moshi=asia.gcr.io/moshi-moshi-3373/moshi-moshi:${VERSION}
+
+gke-login:
+	gcloud container clusters get-credentials preemptible-cluster
