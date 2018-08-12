@@ -22,6 +22,7 @@ func main() {
 	time.Local = loc
 
 	r.Get("/heartbeat", handlers.HandleHeartbeat)
+	r.Get("/moshimoshi/{site}/{path:[0-9-]+}", handlers.HandleMoshimoshi) // expect format : /moshimoshi/a_know_blog/2018-06-24-224424?title=xxxx
 
 	log.Printf("moshi-moshi started.")
 	http.ListenAndServe(":8080", r)

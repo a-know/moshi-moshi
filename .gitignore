@@ -13,3 +13,9 @@
 
 # dep
 vendor/
+
+# credential
+key.json
+
+# src of cert-manager
+cert-manager-0.3.0
