@@ -1,8 +1,9 @@
 package main
 
 import (
-	"log"
+	"fmt"
 	"net/http"
+	"os"
 	"time"
 
 	"github.com/a-know/moshi-moshi/handlers"
@@ -24,6 +25,10 @@ func main() {
 	r.Get("/heartbeat", handlers.HandleHeartbeat)
 	r.Get("/moshimoshi/{site}/{path:[0-9-]+}", handlers.HandleMoshimoshi) // expect format : /moshimoshi/a_know_blog/2018-06-24-224424?title=xxxx
 
-	log.Printf("moshi-moshi started.")
-	http.ListenAndServe(":8080", r)
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+
+	http.ListenAndServe(fmt.Sprintf(":%s", port), r)
 }

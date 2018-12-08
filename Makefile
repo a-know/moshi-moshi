@@ -1,5 +1,7 @@
 .PHONY: all
 
+VERSION = 100
+
 run:
 	go build -o moshi-moshi.exe && ./moshi-moshi.exe
 
@@ -29,3 +31,6 @@ update-container:
 
 gke-login:
 	gcloud container clusters get-credentials preemptible-cluster
+
+deploy-prod: 
+	gcloud app deploy --project moshi-moshi-3373 --version ${VERSION}
