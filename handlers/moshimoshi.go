@@ -72,18 +72,20 @@ func HandleMoshimoshi(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Pixela increment
-	req, err := http.NewRequest("PUT", "https://pixe.la/v1/users/a-know-blog/graphs/page-views/increment", nil)
-	req.Header.Add("X-USER-TOKEN", os.Getenv("PIXELA_USER_TOKEN"))
-	if err != nil {
-		log.Printf("Failed to init request. But continue...: %s", err.Error())
-	} else {
-		client := new(http.Client)
-		resp, err := client.Do(req)
+	if title != "ExternalMonitoring" {
+		req, err := http.NewRequest("PUT", "https://pixe.la/v1/users/a-know-blog/graphs/page-views/increment", nil)
+		req.Header.Add("X-USER-TOKEN", os.Getenv("PIXELA_USER_TOKEN"))
 		if err != nil {
-			log.Printf("Failed to send purge request. But continue...: %s", err.Error())
+			log.Printf("Failed to init request. But continue...: %s", err.Error())
 		} else {
-			log.Printf("Success to send purge request. continue")
-			defer resp.Body.Close()
+			client := new(http.Client)
+			resp, err := client.Do(req)
+			if err != nil {
+				log.Printf("Failed to send purge request. But continue...: %s", err.Error())
+			} else {
+				log.Printf("Success to send purge request. continue")
+				defer resp.Body.Close()
+			}
 		}
 	}
 
