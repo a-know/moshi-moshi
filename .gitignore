@@ -19,3 +19,6 @@ key.json
 
 # src of cert-manager
 cert-manager-0.3.0
+
+# environment variables
+secret.yaml
