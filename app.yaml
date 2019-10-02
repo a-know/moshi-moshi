@@ -16,7 +16,7 @@ includes:
 automatic_scaling: # see: https://qiita.com/sinmetal/items/017e7aa395ff459fca7c
   target_cpu_utilization: 0.95
   target_throughput_utilization: 0.95
-  max_instances: 2
+  max_instances: 1
   min_instances: 0
   min_idle_instances: 0
   max_idle_instances: 0
