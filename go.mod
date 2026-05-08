@@ -1,5 +1,7 @@
 module github.com/a-know/moshi-moshi
 
+go 1.26.1
+
 require (
 	cloud.google.com/go/bigquery v1.50.0
 	github.com/go-chi/chi v3.3.2+incompatible
@@ -13,7 +15,7 @@ require (
 	cloud.google.com/go/iam v0.13.0 // indirect
 	github.com/andybalholm/brotli v1.0.4 // indirect
 	github.com/apache/arrow/go/v11 v11.0.0 // indirect
-	github.com/apache/thrift v0.16.0 // indirect
+	github.com/apache/thrift v0.23.0 // indirect
 	github.com/goccy/go-json v0.9.11 // indirect
 	github.com/golang/groupcache v0.0.0-20200121045136-8c9f03a8e57e // indirect
 	github.com/golang/protobuf v1.5.3 // indirect
